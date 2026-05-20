@@ -3,9 +3,10 @@
         {
             "name": "SellProduct",
             "label": "$task.SellProduct.label",
-            "entry": "SellProductMain",
+            "entry": "SellProductSchedule",
             "description": "$task.SellProduct.description",
             "option": [
+                "SellProductSchedule",
                 "SellBeyondAidQuota",
                 "ValleyIVSell",
                 "WulingSell"
@@ -16,6 +17,76 @@
         }
     ],
     "option": {
+        "SellProductSchedule": {
+            "type": "input",
+            "input_type": "number",
+            "label": "$option.TaskSchedule.label",
+            "default_value": "2",
+            "pipeline_override": {
+                "SellProductSchedule": {
+                    "attach": {
+                        "interval_days": "$value"
+                    }
+                }
+            }
+        },
+                {
+                    "name": "Every2Days",
+                    "label": "$option.TaskScheduleEvery2Days.label",
+                    "pipeline_override": {
+                        "SellProductSchedule": {
+                            "attach": {
+                                "interval_days": "2"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Every3Days",
+                    "label": "$option.TaskScheduleEvery3Days.label",
+                    "pipeline_override": {
+                        "SellProductSchedule": {
+                            "attach": {
+                                "interval_days": "3"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Every5Days",
+                    "label": "5",
+                    "pipeline_override": {
+                        "SellProductSchedule": {
+                            "attach": {
+                                "interval_days": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Every7Days",
+                    "label": "7",
+                    "pipeline_override": {
+                        "SellProductSchedule": {
+                            "attach": {
+                                "interval_days": 7
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Every10Days",
+                    "label": "10",
+                    "pipeline_override": {
+                        "SellProductSchedule": {
+                            "attach": {
+                                "interval_days": 10
+                            }
+                        }
+                    }
+                }
+            ]
+        },
         "SellBeyondAidQuota": {
             "type": "switch",
             "label": "$task.SellProduct.option.SellBeyondAidQuota.label",
